@@ -47,17 +47,9 @@ def get_weather_from_html(html):
         .replace(' Weather Conditions', '') \
         .replace('star_ratehome', '')
     temp = soup.find(attrs={"class":"wu-unit-temperature"}).get_text(strip=True)
-    loc = clean_text(loc)
-    temp = clean_text(temp)
     report = weather_report(location=loc, temperature=temp)
     return report
        
-
-def clean_text(text):
-    if text:
-        text = text.strip()
-    return text
-
 
 def display_weather(weather):
     print("Location: {} Temperature: {}".format(weather.location, weather.temperature))  
